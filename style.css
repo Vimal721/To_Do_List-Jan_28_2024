@@ -1,0 +1,235 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+    background-color: #f0f0f0;
+    font-family: 'Arial', sans-serif;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    min-height: 75vh;
+    min-width: 500px;
+    margin: 5% 0;
+    padding: 3% 3% 2% ;
+    box-shadow: 0 0 20px #0000001a;
+    background-color: #fff; 
+}
+
+.top > h1 {
+    font-family: 'Verdana', sans-serif; 
+    font-size: 30px; 
+}
+
+.get-value {
+    margin-bottom: 20px; 
+}
+
+#input-value {
+    height: 3.5rem;
+    min-width: 480px;
+    font-size: 18px;
+    padding: 0 1rem;
+    outline: none;
+    border: none;
+    box-shadow: inset 0 0 10px #0000001a;
+    border-radius: .5rem;
+    margin-right: 1rem;
+    background-color: #f9f9f9; 
+    color: #333; 
+}
+
+#input-value::placeholder {
+    color: #999; 
+}
+
+.task-btn {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px 20px;
+    width: 160px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.task-btn:hover {
+    background-color: aliceblue;
+    color: #000;
+    border: 2px solid #000;
+}
+
+.show-value {
+    padding: 0 5px;
+    margin-bottom: 20px;
+}
+
+.list-item {
+    list-style-type: none;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    margin: 15px 0px;
+    box-shadow: 1px 1px 10px #0000001a;
+}
+
+.list-item > .item-text {
+    width: 480px;
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.edit-btn,
+.delete-btn {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 12px;
+    width: 80px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 50px;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+    background-color: aliceblue;
+    border: 2px solid #000;
+    color: #000;
+    transition: .4s;
+}
+
+.top{
+    display: flex;
+    justify-content: space-between;
+    width: 480px;
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.task-added,
+.task-alert {
+    position: absolute;
+    right: 0; 
+    width: fit-content;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.task-added {
+    display: none;
+    background-color: #4caf50;
+}
+
+.task-alert {
+    display: none;
+    background-color: #f44336;
+}
+
+
+
+@media screen and (max-width: 760px) {
+    #main{
+        min-width: 400px;
+        padding: 5% 3% 2% ;
+    }
+    #input-value{
+        height: 3.2rem;
+        min-width: 360px;
+        font-size: 16px;
+    }
+    .task-btn{
+        font-size: 16px;
+        width: 140px;
+        padding: 13px 20px;
+    }
+    .show-value{
+        width: 520px;
+    }
+    .edit-btn,
+    .delete-btn {
+        font-size: 13px;
+        padding: 6px 10px;
+        width: 70px;
+    }
+    .top > h1{
+        font-size: 26px; 
+    }
+    .top{
+        width: 360px;
+        margin-bottom: 12px;
+    }
+    .task-added,
+    .task-alert {
+        font-size: 14px;
+        width: fit-content;
+        padding: 8px 18px;
+    }
+    .list-item{
+        font-size: 18px;
+    }
+}
+
+
+@media screen and (max-width: 620px) {
+    #main{
+        min-width: 380px;
+        padding: 5% 3% 2% ;
+    }
+    #input-value{
+        height: 3rem;
+        min-width: 320px;
+        font-size: 15px;
+    }
+    .task-btn{
+        font-size: 15px;
+        width: 120px;
+        padding: 12px 20px;
+    }
+    .show-value{
+        width: 460px;
+    }
+    .edit-btn,
+    .delete-btn {
+        font-size: 12px;
+        padding: 4px 8px;
+        width: 60px;
+    }
+    .top > h1{
+        font-size: 22px; 
+    }
+    .top{
+        width: 320px;
+        margin-bottom: 12px;
+    }
+    .task-added,
+    .task-alert {
+        font-size: 12px;
+        font-weight: bold;
+        width: fit-content;
+        padding: 8px 14px;
+    }
+    .list-item{
+        font-size: 16px;
+    }
+}

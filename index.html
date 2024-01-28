@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="main">
+        <div class="top">
+            <h1>Task List</h1>
+            <div id="taskAdded" class="task-added">
+                Task Added Successfully !
+            </div>
+            <div id="taskAlert" class="task-alert">
+                Please Enter a Task.
+            </div>
+        </div>
+
+        <div class="get-value">
+            <input id="input-value" type="text" placeholder="What do you have planned?">
+            <button class="task-btn" id="taskBtn" onclick="addBtn()">Add Task</button>
+        </div>
+        <div class="show-value"></div>       
+    </div>
+    
+    <script src="./script.js"></script>
+</body>
+
+</html>
