@@ -8,12 +8,13 @@ This is a simple web application for managing your tasks. You can add tasks, edi
 - **Edit Task**: Click the "Edit" button next to a task to edit its content.
 - **Delete Task**: Click the "Delete" button next to a task to remove it from the list.
 - **Responsive Design**: The application is responsive and works well on various screen sizes.
+- **Local Storage**: Tasks are stored in the browser's local storage, allowing them to persist even after the page is refreshed.
 
 ### File Structure
 
 - **index.html**: Contains the structure and content of the web page.
 - **style.css**: Defines the styles for the HTML elements.
-- **script.js**: Contains the JavaScript code for the functionality of the to-do list.
+- **script.js**: Contains the JavaScript code for the functionality of the to-do list, including local storage integration.
 
 ### Usage
 
