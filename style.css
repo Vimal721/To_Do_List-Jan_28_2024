@@ -146,6 +146,36 @@ body {
     background-color: #f44336;
 }
 
+.list-item .item-text {
+    transition: 0.3s ease-in-out;
+}
+
+.list-item .task-checkbox {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid black;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    vertical-align: middle;
+    background-color: white;
+
+}
+
+.list-item .task-checkbox:checked {
+    background-image: url('tick.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 3px;
+    box-sizing: border-box;
+}
+
+.list-item .task-checkbox:checked ~ .btn-container .edit-btn,
+.list-item .task-checkbox:checked ~ .btn-container .delete-btn {
+    pointer-events: none;
+}
+
 
 
 @media screen and (max-width: 760px) {
