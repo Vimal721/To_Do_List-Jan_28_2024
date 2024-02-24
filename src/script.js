@@ -15,14 +15,28 @@ function addBtn() {
     if (inputValue !== '') {
         if (editItem) {
             let index = editItem.parentElement.parentElement.dataset.id;
-            tasks[index] = inputValue;
+            tasks.splice(index, 1);
+            tasks.unshift(inputValue);
+            let checkboxStates = JSON.parse(localStorage.getItem('checkboxStates')) || [];
+
+            checkboxStates.splice(index, 1);
+            checkboxStates.unshift(false);
+
+            localStorage.setItem('checkboxStates', JSON.stringify(checkboxStates));
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+
+            renderTasks();
             editItem = null;
         } else {
-            tasks.push(inputValue);
+            tasks.unshift(inputValue);
+            let checkboxStates = JSON.parse(localStorage.getItem('checkboxStates')) || [];
+            checkboxStates.unshift(false); 
+            localStorage.setItem('checkboxStates', JSON.stringify(checkboxStates));
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+            renderTasks(); 
         }
 
         localStorage.setItem('tasks', JSON.stringify(tasks));
-
         renderTasks();
 
         document.getElementById('input-value').value = '';
@@ -46,6 +60,7 @@ function renderTasks() {
         let newElement = document.createElement('div');
         newElement.className = 'list-item';
         newElement.dataset.id = index;
+        showValue.prepend(newElement);
 
         let checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
@@ -63,7 +78,7 @@ function renderTasks() {
         let editBtn = document.createElement('button');
         editBtn.className = 'edit-btn';
         editBtn.textContent = 'Edit';
-
+        
         editBtn.addEventListener('click', function (event) {
             event.stopPropagation(); 
 
@@ -71,7 +86,7 @@ function renderTasks() {
             let taskTextElement = listItem.querySelector('.item-text');
             let taskText = taskTextElement.textContent.trim();
             document.getElementById('input-value').value = taskText;
-
+    
             editItem = event.target;
         });
 
@@ -82,8 +97,13 @@ function renderTasks() {
         delBtn.onclick = function () {
             let index = this.parentElement.parentElement.dataset.id;
             tasks.splice(index, 1);
-            localStorage.setItem('tasks', JSON.stringify(tasks));
+            let checkboxStates = JSON.parse(localStorage.getItem('checkboxStates')) || [];
+
+            checkboxStates.splice(index, 1); 
+            localStorage.setItem('tasks', JSON.stringify(tasks)); 
+            localStorage.setItem('checkboxStates', JSON.stringify(checkboxStates)); 
             renderTasks();
+
         };
 
         btnContainer.appendChild(editBtn);
@@ -96,21 +116,23 @@ function renderTasks() {
             checkbox.checked = true;
             itemText.style.textDecoration = 'line-through';
             itemText.style.opacity = '0.5';
-            btnContainer.style.opacity = '0.8';
-            disableButtonsInContainer(btnContainer, true); 
+            editBtn.style.opacity = '0.6';
+            disableButtonsInContainer(editBtn, true); 
         }
 
         checkbox.addEventListener('change', function() {
             if (this.checked) {
                 itemText.style.textDecoration = 'line-through';
                 itemText.style.opacity = '0.5';
-                btnContainer.style.opacity = '0.8';
-                disableButtonsInContainer(btnContainer, true); 
+                editBtn.style.opacity = '0.6';
+                newElement.style.backgroundColor = '#f9f6f6e9'; 
+                disableButtonsInContainer(editBtn, true); 
             } else {
                 itemText.style.textDecoration = 'none';
                 itemText.style.opacity = '1';
-                btnContainer.style.opacity = '1';
-                disableButtonsInContainer(btnContainer, false); 
+                editBtn.style.opacity = '1';
+                newElement.style.backgroundColor = '#fff'; 
+                disableButtonsInContainer(editBtn, false); 
             }
 
             let checkboxStates = JSON.parse(localStorage.getItem('checkboxStates')) || [];
@@ -121,8 +143,8 @@ function renderTasks() {
 }
 
 function disableButtonsInContainer(container, disable) {
-    let buttons = container.querySelectorAll('button');
-    buttons.forEach(button => {
-        button.disabled = disable;
-    });
+    let editBtn = container.querySelector('.edit-btn');
+    if (editBtn) { 
+        editBtn.disabled = disable; 
+    }
 }

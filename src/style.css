@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    user-select: none;
 }
 
 body {
@@ -171,8 +172,7 @@ body {
     box-sizing: border-box;
 }
 
-.list-item .task-checkbox:checked ~ .btn-container .edit-btn,
-.list-item .task-checkbox:checked ~ .btn-container .delete-btn {
+.list-item .task-checkbox:checked ~ .btn-container .edit-btn{
     pointer-events: none;
 }
 
